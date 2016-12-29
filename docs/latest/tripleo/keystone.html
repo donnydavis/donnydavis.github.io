@@ -226,14 +226,14 @@
 <div class="content">
 <pre class="nowrap">parameter_defaults:
   ControllerExtraConfig:
-    horizon:keystone_multidomain_support: True
-    keystone::using_domain_config: true
-    keystone::config::keystone_config:
-      identity/domain_configurations_from_database:
+    horizon:keystone_multidomain_support: True <i class="conum" data-value="1"></i><b>(1)</b>
+    keystone::using_domain_config: true <i class="conum" data-value="2"></i><b>(2)</b>
+    keystone::config::keystone_config: //
+      identity/domain_configurations_from_database: <i class="conum" data-value="3"></i><b>(3)</b>
         value: false
-      identity/default_domain_id:
+      identity/default_domain_id: <i class="conum" data-value="4"></i><b>(4)</b>
         value: default
-      identity/driver:
+      identity/driver: <i class="conum" data-value="5"></i><b>(5)</b>
         value: sql</pre>
 </div>
 </div>
