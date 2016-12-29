@@ -224,15 +224,17 @@
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="yaml"><span style="color:#606">parameter_defaults</span>:
-  <span style="color:#606">ControllerExtraConfig</span>:
-
-      <span style="color:#606">identity/domain_configurations_from_database</span>:
-        <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false</span></span>
-      <span style="color:#606">identity/default_domain_id</span>:
-        <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">default</span></span>
-      <span style="color:#606">identity/driver</span>:
-        <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sql</span></span></code></pre>
+<pre class="nowrap">parameter_defaults:
+  ControllerExtraConfig:
+    horizon:keystone_multidomain_support: True
+    keystone::using_domain_config: true
+    keystone::config::keystone_config:
+      identity/domain_configurations_from_database:
+        value: false
+      identity/default_domain_id:
+        value: default
+      identity/driver:
+        value: sql</pre>
 </div>
 </div>
 <div class="colist arabic">
