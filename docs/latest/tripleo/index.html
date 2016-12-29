@@ -22,16 +22,9 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../dist/img/apple-touch-icon-precomposed-114.png">
     <!-- iPhone non-retina icon (iOS < 7) -->
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../../dist/img/apple-touch-icon-precomposed-57.png">
-    
-    <link rel="stylesheet" href="/assets/dist/css/patternfly.min.css" >
-    <link rel="stylesheet" href="/assets/dist/css/asciibinder.css" >
-    <link rel="stylesheet" href="/assets/dist/css/patternfly-additions.min.css" >
-    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="/assets/dist/js/jquery.matchHeight-min.js"></script>
-    <script src="/assets/dist/js/patternfly.min.js"></script>
-
-    
+      
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
     
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -131,33 +124,7 @@
     </li>
   </ul>
 </div>
-<script>
-  $(document).ready(function() {
-    // matchHeight the contents of each .card-pf and then the .card-pf itself
-    $(".row-cards-pf > [class*='col'] > .card-pf .card-pf-title").matchHeight();
-    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").matchHeight();
-    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-footer").matchHeight();
-    $(".row-cards-pf > [class*='col'] > .card-pf").matchHeight();
 
-    // Initialize the vertical navigation
-    $().setupVerticalNavigation(true);
-  });
-</script>
-<script>
-  $(function() {
-    // matchHeight the contents of each .card-pf and then the .card-pf itself
-    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").matchHeight();
-  });
-  $(document).ready(function() {
-    // Card Single Select
-    $('.card-pf-view-single-select').click(function() {
-      if ($(this).hasClass('active'))
-      { $(this).removeClass('active'); }
-      else
-      { $('.card-pf-view-single-select').removeClass('active'); $(this).addClass('active'); }
-    });
-  });
-</script>
 
 <body>
  <div class="container">
@@ -232,7 +199,9 @@
       </div>
     </div>
   </div>
-
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <!-- Latest compiled and minified JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
  
 
   
