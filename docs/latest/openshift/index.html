@@ -22,9 +22,10 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../dist/img/apple-touch-icon-precomposed-114.png">
     <!-- iPhone non-retina icon (iOS < 7) -->
     <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../../dist/img/apple-touch-icon-precomposed-57.png">
+    
     <link rel="stylesheet" href="/assets/dist/css/patternfly.min.css" >
     <link rel="stylesheet" href="/assets/dist/css/patternfly-additions.min.css" >
-      <link href="/assets/dist/tests/tests.css" rel="stylesheet" media="screen, print">
+    <link href="/assets/dist/tests/tests.css" rel="stylesheet" media="screen, print">
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="/assets/dist/js/jquery.matchHeight-min.js"></script>
@@ -215,6 +216,21 @@
       </div>
     </div>
   </div>
+<script>
+  $(function() {
+    // matchHeight the contents of each .card-pf and then the .card-pf itself
+    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").matchHeight();
+  });
+  $(document).ready(function() {
+    // Card Single Select
+    $('.card-pf-view-single-select').click(function() {
+      if ($(this).hasClass('active'))
+      { $(this).removeClass('active'); }
+      else
+      { $('.card-pf-view-single-select').removeClass('active'); $(this).addClass('active'); }
+    });
+  });
+</script>
   
    <script type="text/javascript">
     /*<![CDATA[*/
