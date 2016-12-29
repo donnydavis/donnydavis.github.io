@@ -219,9 +219,6 @@ body, html {
   overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
 
-.toggle-nav {
-  margin-right: 20px;
-}
 
 @media screen and (max-width: 767px) {
   .row-offcanvas {
