@@ -46,27 +46,6 @@ License: https://creativecommons.org/licenses/by/2.0/
   color: #ccc;
 }
 
-.collapse a.active {
-  background-color: #DEEAF4;
-  color: #000;
-  position: relative;
-}
-
-.collapse a.active:hover {
-  text-decoration: none;
-}
-
-.collapse a.active:before {
-  background-color: #A0C3E5;
-  content: "";
-  display: inline-block;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 3px;
-}
-
 .main h2, .main .h2 {
   border-top: 0px;
   padding-top: 10px;
