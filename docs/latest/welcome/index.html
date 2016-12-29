@@ -125,9 +125,6 @@
       <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
     </p>
     <ol class="breadcrumb">
-      <li class="sitename">
-        <a href="../../index.html">Home</a>
-      </li>
       <li class="hidden-xs active">
         <a href="../welcome/index.html">Fort Nebula Latest</a>
       </li>
@@ -187,31 +184,6 @@
       </div>
     </div>
   </div>
-   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-   <!-- Latest compiled and minified JavaScript -->
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-   <script type="text/javascript">
-    /*<![CDATA[*/
-    $(document).ready(function() {
-      $("[id^='topicGroup']").on('show.bs.collapse', function (event) {
-        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
-          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
-        }
-      });
-      $("[id^='topicGroup']").on('hide.bs.collapse', function (event) {
-        if (!($(event.target).attr('id').match(/^topicSubGroup/))) {
-          $(this).parent().find("[id^='tgSpan']").toggleClass("fa-angle-right fa-angle-down");
-        }
-      });
-      $("[id^='topicSubGroup']").on('show.bs.collapse', function () {
-        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
-      });
-      $("[id^='topicSubGroup']").on('hide.bs.collapse', function () {
-        $(this).parent().find("[id^='sgSpan']").toggleClass("fa-caret-right fa-caret-down");
-      });
-    });
-    /*]]>*/
-  </script>
+   
 </body>
 </html>
