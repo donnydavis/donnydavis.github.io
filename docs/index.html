@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/dist/img/favicon.ico">
+    <link rel="shortcut icon" href="/assets/dist/img/favicon.ico">
     <!-- iPad retina icon -->
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../dist/img/apple-touch-icon-precomposed-152.png">
     <!-- iPad retina icon (iOS < 7) -->
@@ -28,6 +28,7 @@
       <link href="/assets/dist/tests/tests.css" rel="stylesheet" media="screen, print">
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/assets/dist/js/jquery.matchHeight-min.js"></script>
     <script src="/assets/dist/js/patternfly.min.js"></script>
   </head>
 
@@ -124,7 +125,11 @@
 
 <script>
   $(document).ready(function() {
-
+    // matchHeight the contents of each .card-pf and then the .card-pf itself
+    $(".row-cards-pf > [class*='col'] > .card-pf .card-pf-title").matchHeight();
+    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").matchHeight();
+    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-footer").matchHeight();
+    $(".row-cards-pf > [class*='col'] > .card-pf").matchHeight();
 
     // Initialize the vertical navigation
     $().setupVerticalNavigation(true);
