@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="layout-pf layout-pf-fixed">
 <head>
   <meta charset="utf-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
@@ -7,38 +7,164 @@
   <title>Fort Nebula Latest | FreeIPA | Get Started</title>
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="/assets/dist/css/asciibinder.css" >
-  
+   <link rel="shortcut icon" href="/assets/dist/img/favicon.ico">
+    <!-- iPad retina icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../dist/img/apple-touch-icon-precomposed-152.png">
+    <!-- iPad retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../dist/img/apple-touch-icon-precomposed-144.png">
+    <!-- iPad non-retina icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="../../dist/img/apple-touch-icon-precomposed-76.png">
+    <!-- iPad non-retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../dist/img/apple-touch-icon-precomposed-72.png">
+    <!-- iPhone 6 Plus icon -->
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="../../dist/img/apple-touch-icon-precomposed-180.png">
+    <!-- iPhone retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../dist/img/apple-touch-icon-precomposed-114.png">
+    <!-- iPhone non-retina icon (iOS < 7) -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="../../dist/img/apple-touch-icon-precomposed-57.png">
+    
+    <link rel="stylesheet" href="/assets/dist/css/patternfly.min.css" >
+    <link rel="stylesheet" href="/assets/dist/css/asciibinder.css" >
+    <link rel="stylesheet" href="/assets/dist/css/patternfly-additions.min.css" >
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="/assets/dist/js/jquery.matchHeight-min.js"></script>
+    <script src="/assets/dist/js/patternfly.min.js"></script>
 
+    
+
+    
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
    <!--[if lt IE 9]>
      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
    <![endif]-->
-
-  <link href="../../latest/_images/favicon32x32.png" rel="shortcut icon" type="text/css">
   <!--[if IE]><link rel="shortcut icon" href="../../latest/_images/favicon.ico"><![endif]-->
-  <meta content="AsciiBinder" name="application-name">
+  
 </head>
-<body>
-  <div class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="http://www.asciibinder.org/"><img alt="AsciiBinder" src="../../latest/_images/asciibinder-logo-horizontal.png"></a>
-      </div>
-    </div>
+
+
+ <nav class="navbar navbar-pf-vertical">
+  <div class="navbar-header">
+   <button type="button" class="navbar-toggle">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+    <a href="/" class="navbar-brand">
+      <img class="navbar-brand-icon" src="/assets/dist/img/logo-alt.svg" alt=""/><img class="navbar-brand-name" src="/assets/dist/img/fn-brand.svg" alt="Fort Nebula" />
+    </a>
   </div>
-  <div class="container">
+  <nav class="collapse navbar-collapse">
+    <ul class="nav navbar-nav">
+    </ul>
+    <ul class="nav navbar-nav navbar-right navbar-iconic">
+      <li class="dropdown">
+        <a class="dropdown-toggle nav-item-iconic" id="notifications" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <span title="Notifications" class="fa pficon-flag"></span>
+          <span class="badge">0</span>
+        </a>
+        <div class="dropdown-menu infotip bottom-right">
+          <div class="arrow"></div>
+          <ul class="list-group">
+            <li class="list-group-item">
+              <span class="i pficon pficon-info"></span> No Messages
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle nav-item-iconic" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <span title="Help" class="fa pficon-help"></span>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <li><a href="https://github.com/donnydavis/donnydavis.github.io">Fork Me</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</nav> <!--/.navbar-->
+
+
+<div class="nav-pf-vertical">
+  <ul class="list-group">
+    <li class="list-group-item">
+      <a href="/#">
+        <span class="fa fa-dashboard" data-toggle="tooltip" title="Home"></span>
+        <span class="list-group-item-value">Home</span>
+      </a>
+    </li>
+    <li class="list-group-item">
+      <a href="/articles">
+        <span class="fa fa-paper-plane" data-toggle="tooltip" title="Articles"></span>
+        <span class="list-group-item-value">Articles</span>
+      </a>
+    </li>
+    <li class="list-group-item">
+      <a href="/services">
+        <span class="fa fa-rocket" data-toggle="tooltip" title="Services"></span>
+        <span class="list-group-item-value">Services</span>
+      </a>
+    </li>
+    <li class="list-group-item">
+      <a href="/about">
+        <span class="fa fa-graduation-cap" data-toggle="tooltip" title="About"></span>
+        <span class="list-group-item-value">About</span>
+      </a>
+    </li>
+    <li class="list-group-item">
+      <a href="/links">
+        <span class="fa fa-link" data-toggle="tooltip" title="Links"></span>
+        <span class="list-group-item-value">Links</span>
+      </a>
+    </li>
+    <li class="list-group-item">
+      <a href="/docs/latest/welcome/">
+        <span class="fa fa-book" data-toggle="tooltip" title="Links"></span>
+        <span class="list-group-item-value">Docs</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<script>
+  $(document).ready(function() {
+    // matchHeight the contents of each .card-pf and then the .card-pf itself
+    $(".row-cards-pf > [class*='col'] > .card-pf .card-pf-title").matchHeight();
+    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").matchHeight();
+    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-footer").matchHeight();
+    $(".row-cards-pf > [class*='col'] > .card-pf").matchHeight();
+
+    // Initialize the vertical navigation
+    $().setupVerticalNavigation(true);
+  });
+</script>
+<script>
+  $(function() {
+    // matchHeight the contents of each .card-pf and then the .card-pf itself
+    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").matchHeight();
+  });
+  $(document).ready(function() {
+    // Card Single Select
+    $('.card-pf-view-single-select').click(function() {
+      if ($(this).hasClass('active'))
+      { $(this).removeClass('active'); }
+      else
+      { $('.card-pf-view-single-select').removeClass('active'); $(this).addClass('active'); }
+    });
+  });
+</script>
+
+<body>
+ <div class="container">
     <p class="toggle-nav visible-xs pull-left">
       <button class="btn btn-default btn-sm" type="button" data-toggle="offcanvas">Toggle nav</button>
     </p>
     <ol class="breadcrumb">
-      <li class="sitename">
-        <a href="../../index.html">Home</a>
-      </li>
       <li class="hidden-xs active">
         <a href="../welcome/index.html">Fort Nebula Latest</a>
       </li>
@@ -106,10 +232,10 @@
       </div>
     </div>
   </div>
-   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-   <!-- Latest compiled and minified JavaScript -->
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+ 
+
+  
    <script type="text/javascript">
     /*<![CDATA[*/
     $(document).ready(function() {
