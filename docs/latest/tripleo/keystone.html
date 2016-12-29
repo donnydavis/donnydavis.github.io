@@ -198,7 +198,50 @@
 <div class="sect2">
 <h3 id="modifications-domains"><a class="anchor" href="#modifications-domains"></a>Adding Domain support to Keystone</h3>
 <div class="paragraph">
-<p>The default keystone options can be modified to support domains.</p>
+<p>The default keystone options can be modified to support domains. Below is the example I used to enable domain support. You can copy this template into your deployment if you require domain support.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="yaml"><span style="color:#606">parameter_defaults</span>:
+  <span style="color:#606">ControllerExtraConfig</span>:
+    <span style="color:#F00;background-color:#FAA">horizon::keystone_multidomain_support</span>: <span style="color:#F00;background-color:#FAA">True </span><i class="conum" data-value="1"></i><b>(1)</b>
+    <span style="color:#F00;background-color:#FAA">keystone::using_domain_config</span>: <span style="color:#F00;background-color:#FAA">true </span><i class="conum" data-value="2"></i><b>(2)</b>
+    <span style="color:#F00;background-color:#FAA">keystone::config::keystone_config</span>:
+      <span style="color:#606">identity/domain_configurations_from_database</span>: <i class="conum" data-value="3"></i><b>(3)</b>
+        <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">false</span></span>
+      <span style="color:#606">identity/default_domain_id</span>: <i class="conum" data-value="4"></i><b>(4)</b>
+        <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">default</span></span>
+      <span style="color:#606">identity/driver</span>: <i class="conum" data-value="5"></i><b>(5)</b>
+        <span style="color:#606">value</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#D20">sql</span></span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This enables domain support on the horizon dashboard</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>This parameter is to enable domain support in keystone</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>I do not store the domain configuration in the database, so I set this to false</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>This option allows you to modify what the default domain is, if one is not specified</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Because I am using the ldap driver for my domain, I set this parameter to sql so the serivce accounts for Openstack remain in the database</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </div>
 </div>
