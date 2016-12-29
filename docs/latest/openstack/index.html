@@ -133,7 +133,33 @@
     </li>
   </ul>
 </div>
+<script>
+  $(document).ready(function() {
+    // matchHeight the contents of each .card-pf and then the .card-pf itself
+    $(".row-cards-pf > [class*='col'] > .card-pf .card-pf-title").matchHeight();
+    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").matchHeight();
+    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-footer").matchHeight();
+    $(".row-cards-pf > [class*='col'] > .card-pf").matchHeight();
 
+    // Initialize the vertical navigation
+    $().setupVerticalNavigation(true);
+  });
+</script>
+<script>
+  $(function() {
+    // matchHeight the contents of each .card-pf and then the .card-pf itself
+    $(".row-cards-pf > [class*='col'] > .card-pf > .card-pf-body").matchHeight();
+  });
+  $(document).ready(function() {
+    // Card Single Select
+    $('.card-pf-view-single-select').click(function() {
+      if ($(this).hasClass('active'))
+      { $(this).removeClass('active'); }
+      else
+      { $('.card-pf-view-single-select').removeClass('active'); $(this).addClass('active'); }
+    });
+  });
+</script>
 
 <body>
  <div class="container">
@@ -209,9 +235,7 @@
     </div>
   </div>
 
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-   <!-- Latest compiled and minified JavaScript -->
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+ 
 
   
    <script type="text/javascript">
