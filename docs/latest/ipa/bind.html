@@ -5,7 +5,7 @@
 <html lang="en-us" class="layout-pf layout-pf-fixed">
 <!--<![endif]-->
   <head>
-    <title>Fort Nebula Latest | FreeIPA | Get Started</title>
+    <title>Fort Nebula Latest | FreeIPA | Adding a bind user</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -149,7 +149,7 @@
        </li>
        
        <li class="hidden-xs active">
-         Get Started
+         Adding a bind user
        </li>
      </ol>
      <div class="row row-offcanvas row-offcanvas-left">
@@ -193,19 +193,71 @@
         <span id="tgSpan4" class="fa fa-angle-down"></span>FreeIPA
       </a>
       <ul id="topicGroup4" class="collapse in list-unstyled">
-            <li><a class=" active" href="../ipa/index.html">Get Started</a></li>
-            <li><a class="" href="../ipa/bind.html">Adding a bind user</a></li>
+            <li><a class="" href="../ipa/index.html">Get Started</a></li>
+            <li><a class=" active" href="../ipa/bind.html">Adding a bind user</a></li>
       </ul>
     </li>
 </ul>
        </div>
        <div class="col-xs-12 col-sm-9 col-md-9 main">
          <div class="page-header">
-           <h2>Fort Nebula Latest Documentation</h2>
+           <h2>Adding a bind user to FreeIPA</h2>
          </div>
 	 <div class="col-xs-12 col-sm-6 col-md-8">
            <div class="paragraph">
-<p>Welcome to my FreeIPA Docs page.</p>
+<p>This document is something I do every time I setup an IPA server. Many applications need a bind user to perform searches of the directory, and I find it to be useful.</p>
+</div>
+<div class="paragraph">
+<p>The first thing we will do is create an ldif file to load into the LDAP server</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">cat &lt;&lt; EOF &gt; search.ldif
+dn: uid=search,cn=sysaccounts,cn=etc,dc=example,dc=org <i class="conum" data-value="1"></i><b>(1)</b>
+changetype: add
+objectclass: account
+objectclass: simplesecurityobject
+uid: search
+userPassword: supersecurepassword <i class="conum" data-value="2"></i><b>(2)</b>
+passwordExpirationTime: 20380119031407Z
+nsIdleTimeout: 0
+EOF</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This is the user that will be created in the LDAP directory for searching, binding,ETC. Don&#8217;t forget to edit for your own domain before just pasting into the command line</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Change this password to something very secure</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Next we are going to load this LDIF into the directory. There are many way to do this, depending on where the LDIF file is located.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">ldapmodify -h localhost -p 389 -x -D "cn=Directory Manager" -w 'anothersupersecretpassword' -f search.ldif <i class="conum" data-value="1"></i><b>(1)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The password required here is the password for the Directory Manager created during ipa-server-install</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>That is it, now you have a bind user that can be used to searchs, binds, etc.</p>
+</div>
+<div class="paragraph">
+<p>I found this article on the IPA website,
+<a href="http://www.freeipa.org/page/EJabberd_Integration_with_FreeIPA_using_LDAP_Group_memberships" class="bare">http://www.freeipa.org/page/EJabberd_Integration_with_FreeIPA_using_LDAP_Group_memberships</a> - automatic!</p>
 </div>
 	  </div>
        </div>
