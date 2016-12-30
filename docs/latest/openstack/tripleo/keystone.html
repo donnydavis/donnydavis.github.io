@@ -5,7 +5,7 @@
 <html lang="en-us" class="layout-pf layout-pf-fixed">
 <!--<![endif]-->
   <head>
-    <title>Fort Nebula Latest | Welcome | Welcome</title>
+    <title>Fort Nebula Latest | Openstack | Triple-O | Keystone Domains</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -142,14 +142,14 @@
   </p>
      <ol class="breadcrumb">
        <li class="hidden-xs active">
-         <a href="../welcome/index.html">Fort Nebula Latest</a>
+         <a href="../../welcome/index.html">Fort Nebula Latest</a>
        </li>
        <li class="hidden-xs active">
-         <a href="../welcome/index.html">Welcome</a>
+         <a href="../../openstack/index.html">Openstack</a>
        </li>
-       
+       <li class="hidden-xs active"><a href="../../openstack/tripleo/index.html">Triple-O</a></li>
        <li class="hidden-xs active">
-         Welcome
+         Keystone Domains
        </li>
      </ol>
      <div class="row row-offcanvas row-offcanvas-left">
@@ -157,25 +157,25 @@
          <ul class="nav nav-sidebar">
     <li class="nav-header">
       <a class="" href="#" data-toggle="collapse" data-target="#topicGroup0">
-        <span id="tgSpan0" class="fa fa-angle-down"></span>Welcome
+        <span id="tgSpan0" class="fa fa-angle-right"></span>Welcome
       </a>
-      <ul id="topicGroup0" class="collapse in list-unstyled">
-            <li><a class=" active" href="../welcome/index.html">Welcome</a></li>
+      <ul id="topicGroup0" class="collapse  list-unstyled">
+            <li><a class="" href="../../welcome/index.html">Welcome</a></li>
       </ul>
     </li>
     <li class="nav-header">
       <a class="" href="#" data-toggle="collapse" data-target="#topicGroup1">
-        <span id="tgSpan1" class="fa fa-angle-right"></span>Openstack
+        <span id="tgSpan1" class="fa fa-angle-down"></span>Openstack
       </a>
-      <ul id="topicGroup1" class="collapse  list-unstyled">
-            <li><a class="" href="../openstack/index.html">Get Started</a></li>
+      <ul id="topicGroup1" class="collapse in list-unstyled">
+            <li><a class="" href="../../openstack/index.html">Get Started</a></li>
             <li class="nav-header">
               <a class="" href="#" data-toggle="collapse" data-target="#topicSubGroup-1-1">
-                <span id="sgSpan-1-1" class="fa fa-caret-right"></span>&nbsp;Triple-O
+                <span id="sgSpan-1-1" class="fa fa-caret-down"></span>&nbsp;Triple-O
               </a>
-              <ul id="topicSubGroup-1-1" class="nav-tertiary list-unstyled collapse">
-                  <li><a class="" href="../openstack/tripleo/index.html">What is Triple-O</a></li>
-                  <li><a class="" href="../openstack/tripleo/keystone.html">Keystone Domains</a></li>
+              <ul id="topicSubGroup-1-1" class="nav-tertiary list-unstyled collapse in">
+                  <li><a class="" href="../../openstack/tripleo/index.html">What is Triple-O</a></li>
+                  <li><a class=" active" href="../../openstack/tripleo/keystone.html">Keystone Domains</a></li>
               </ul>
             </li>
       </ul>
@@ -185,7 +185,7 @@
         <span id="tgSpan2" class="fa fa-angle-right"></span>Openshift
       </a>
       <ul id="topicGroup2" class="collapse  list-unstyled">
-            <li><a class="" href="../openshift/index.html">Get Started</a></li>
+            <li><a class="" href="../../openshift/index.html">Get Started</a></li>
       </ul>
     </li>
     <li class="nav-header">
@@ -193,26 +193,87 @@
         <span id="tgSpan3" class="fa fa-angle-right"></span>FreeIPA
       </a>
       <ul id="topicGroup3" class="collapse  list-unstyled">
-            <li><a class="" href="../ipa/index.html">Get Started</a></li>
-            <li><a class="" href="../ipa/bind.html">Adding a bind user</a></li>
+            <li><a class="" href="../../ipa/index.html">Get Started</a></li>
+            <li><a class="" href="../../ipa/bind.html">Adding a bind user</a></li>
       </ul>
     </li>
 </ul>
        </div>
        <div class="col-xs-12 col-sm-9 col-md-9 main">
          <div class="page-header">
-           <h2>Fort Nebula Latest Documentation</h2>
+           <h2>Triple-O Keystone</h2>
          </div>
 	 <div class="col-xs-12 col-sm-6 col-md-8">
-           <div class="paragraph">
-<p>Welcome to the Fort Nebula Docs Management System. Here you will find all of my documentation, and also any downloadable files for your own projects. Please browse around, and if you have questions feel free to reach out. I am still in the process of implmenting something to complete the feedback loop between reader and writer.</p>
+           <div id="preamble">
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#overview">Overview</a>
+<ul class="sectlevel2">
+<li><a href="#modifications-domains">Adding Domain support to Keystone</a></li>
+</ul>
+</li>
+</ul>
 </div>
-<div class="paragraph">
-<p>Thanks for checking out Fort Nebula</p>
 </div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>Donny
-<a href="mailto:donny@fortnebula.com">donny@fortnebula.com</a></p>
+<p>Triple-O comes with a way to maniplate just about any parameter in an Openstack Deployment. This is done by passing enviroment templates into the deployment. Below are a few exmaples of deployment modifications I have made to suit my enviroment.</p>
+</div>
+<div class="sect2">
+<h3 id="modifications-domains"><a class="anchor" href="#modifications-domains"></a>Adding Domain support to Keystone</h3>
+<div class="paragraph">
+<p>The default keystone options can be modified to support domains. Below is the example I used to enable domain support. You can copy this template into your deployment if you require domain support.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">parameter_defaults:
+  ControllerExtraConfig:
+    horizon:keystone_multidomain_support: True <i class="conum" data-value="1"></i><b>(1)</b>
+    keystone::using_domain_config: true <i class="conum" data-value="2"></i><b>(2)</b>
+    keystone::config::keystone_config:
+      identity/domain_configurations_from_database: <i class="conum" data-value="3"></i><b>(3)</b>
+        value: false
+      identity/default_domain_id: <i class="conum" data-value="4"></i><b>(4)</b>
+        value: default
+      identity/driver: <i class="conum" data-value="5"></i><b>(5)</b>
+        value: sql</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This enables domain support on the horizon dashboard</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>This parameter is to enable domain support in keystone</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>I do not store the domain configuration in the database, so I set this to false</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>This option allows you to modify what the default domain is, if one is not specified</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Because I am using the ldap driver for my domain, I set this parameter to sql so the serivce accounts for Openstack remain in the database</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 	  </div>
        </div>
