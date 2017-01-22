@@ -318,6 +318,23 @@ resources:
       config: {get_resource: AttachIscsiDrive}
       actions: ['CREATE'] # Only do this on CREATE
       server: {get_param: server}
+
+  WipeIscsiDisks:
+    type: OS::Heat::SoftwareConfig
+    properties:
+      group: script
+      config: |
+        #!/bin/sh
+        /usr/bin/dd if=/dev/zero of=/dev/sdb bs=128K count=100
+
+  WipeIscsiDiskDeployment:
+    type: OS::Heat::SoftwareDeployment
+    properties:
+      name: WipeIscsiDiskDeployment
+      server: {get_param: server}
+      config: {get_resource: WipeIscsiDisks}
+      actions: ['DELETE'] # Only do this on DELETE
+
 outputs:
   deploy_stderr:
    description: Captured stderr from the configuration execution
