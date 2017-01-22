@@ -5,7 +5,7 @@
 <html lang="en-us" class="layout-pf layout-pf-fixed">
 <!--<![endif]-->
   <head>
-    <title>Fort Nebula Latest | Openstack | Triple-O | Keystone Domains</title>
+    <title>Fort Nebula Latest | Openstack | Triple-O | Swift ISCSI</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -150,7 +150,7 @@
        </li>
        <li class="hidden-xs active"><a href="../../openstack/tripleo/index.html">Triple-O</a></li>
        <li class="hidden-xs active">
-         Keystone Domains
+         Swift ISCSI
        </li>
      </ol>
      <div class="row row-offcanvas row-offcanvas-left">
@@ -176,8 +176,8 @@
               </a>
               <ul id="topicSubGroup-1-1" class="nav-tertiary list-unstyled collapse in">
                   <li><a class="" href="../../openstack/tripleo/index.html">What is Triple-O</a></li>
-                  <li><a class=" active" href="../../openstack/tripleo/keystone.html">Keystone Domains</a></li>
-                  <li><a class="" href="../../openstack/tripleo/swift-iscsi.html">Swift ISCSI</a></li>
+                  <li><a class="" href="../../openstack/tripleo/keystone.html">Keystone Domains</a></li>
+                  <li><a class=" active" href="../../openstack/tripleo/swift-iscsi.html">Swift ISCSI</a></li>
               </ul>
             </li>
       </ul>
@@ -203,7 +203,7 @@
        </div>
        <div class="col-xs-12 col-sm-9 col-md-9 main">
          <div class="page-header">
-           <h2>Triple-O Keystone</h2>
+           <h2>Triple-O Swift ISCSI</h2>
          </div>
 	 <div class="col-xs-12 col-sm-6 col-md-8">
            <div id="preamble">
@@ -213,7 +213,7 @@
 <ul class="sectlevel1">
 <li><a href="#overview">Overview</a>
 <ul class="sectlevel2">
-<li><a href="#modifications-domains">Adding Domain support to Keystone</a></li>
+<li><a href="#modifications-preconfig">Adding support to mount iscsi drives</a></li>
 </ul>
 </li>
 </ul>
@@ -224,55 +224,129 @@
 <h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Triple-O comes with a way to maniplate just about any parameter in an Openstack Deployment. This is done by passing enviroment templates into the deployment. Below are a few exmaples of deployment modifications I have made to suit my enviroment.</p>
+<p>For my enviroment I wanted to be able to use a single multi-purpose storage server, but I didn&#8217;t want to lose functionality.</p>
+</div>
+<div class="paragraph">
+<p>The setup for this is to support 3 controller nodes, so I created three targets on my SAN. The target ends with the hostname of the controller node, IE overcloud-controller-0 etc</p>
 </div>
 <div class="sect2">
-<h3 id="modifications-domains"><a class="anchor" href="#modifications-domains"></a>Adding Domain support to Keystone</h3>
+<h3 id="modifications-preconfig"><a class="anchor" href="#modifications-preconfig"></a>Adding support to mount iscsi drives</h3>
 <div class="paragraph">
-<p>The default keystone options can be modified to support domains. Below is the example I used to enable domain support. You can copy this template into your deployment if you require domain support.</p>
+<p>The purpose of this is to show how you can easily customize your Openstack deployment to suit your enviroment. The following will mount an iscsi drive on each controller node in the pre-config phase of deployment</p>
+</div>
+<div class="paragraph">
+<p>First you need to add in support for pre-config of the controller node.</p>
+</div>
+<div class="paragraph">
+<p>This file is called controller-pre-deploy.yaml</p>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">parameter_defaults:
-  ControllerExtraConfig:
-    horizon:keystone_multidomain_support: True <i class="conum" data-value="1"></i><b>(1)</b>
-    keystone::using_domain_config: true <i class="conum" data-value="2"></i><b>(2)</b>
-    keystone::config::keystone_config:
-      identity/domain_configurations_from_database: <i class="conum" data-value="3"></i><b>(3)</b>
-        value: false
-      identity/default_domain_id: <i class="conum" data-value="4"></i><b>(4)</b>
-        value: default
-      identity/driver: <i class="conum" data-value="5"></i><b>(5)</b>
-        value: sql</pre>
+<pre class="nowrap">resource_registry:
+  OS::TripleO::ControllerExtraConfigPre: extraconfig/pre_deploy/controller/controller-extra-config-pre-deploy.yaml <i class="conum" data-value="1"></i><b>(1)</b>
+parameter_defaults:
+  SwiftRawDisks: {"sdb": {}} <i class="conum" data-value="2"></i><b>(2)</b>
+  SwiftReplicas: 1 <i class="conum" data-value="3"></i><b>(3)</b></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>This enables domain support on the horizon dashboard</td>
+<td>Please note the directory, and ensure the file that is being loaded actually exists.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>This parameter is to enable domain support in keystone</td>
+<td>Change this value to meet what disk your lun gets mounted as. If you only have one disk, its more than likely sdb</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>I do not store the domain configuration in the database, so I set this to false</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>This option allows you to modify what the default domain is, if one is not specified</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
-<td>Because I am using the ldap driver for my domain, I set this parameter to sql so the serivce accounts for Openstack remain in the database</td>
+<td>The SAN is taking care of replicating the data, no sense in replicating it 3 more times.</td>
 </tr>
 </table>
 </div>
 </div>
+</div>
+<div class="paragraph">
+<p>Next we add the directory and create the file to be loaded.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">mkdir -p extraconfig/pre_deploy/controller/
+touch extraconfig/pre_deploy/controller/controller-extra-config-pre-deploy.yaml</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can open this file up in your favorite editor and insert the following.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">heat_template_version: 2014-10-16
+
+description: &gt;
+  Mount iSCSI Drives to Controller Nodes, Create domains file for keystone
+
+# Note extra parameters can be defined, then passed data via the
+# environment parameter_defaults, without modifying the parent template
+parameters:
+  server:
+    type: string
+
+resources:
+  AttachIscsiDrive:
+    type: OS::Heat::SoftwareConfig
+    properties:
+      group: script
+      config: |
+        #!/bin/sh
+        export _HOSTNAME=$(hostname -s) <i class="conum" data-value="1"></i><b>(1)</b>
+        /sbin/iscsiadm -m discovery -t sendtargets -p 192.168.254.235 <i class="conum" data-value="2"></i><b>(2)</b>
+        /sbin/iscsiadm -m node -T iqn.2010-01.org.example.hostname:$_HOSTNAME --login <i class="conum" data-value="3"></i><b>(3)</b>
+
+  AttachIscsiDriveDeployment:
+    type: OS::Heat::SoftwareDeployment
+    properties:
+      name: AttachIscsiDriveDeployment
+      config: {get_resource: AttachIscsiDrive}
+      actions: ['CREATE'] # Only do this on CREATE
+      server: {get_param: server}
+outputs:
+  deploy_stderr:
+   description: Captured stderr from the configuration execution
+   value: {get_attr: [AttachIscsiDriveDeployment, deploy_stderr]}
+  deploy_stdout:
+    description: Captured stdout from the configuration execution
+    value: {get_attr: [AttachIscsiDriveDeployment, deploy_stdout]}</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>What this does is get a unique name from each controller, so they can mount different targets</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Don&#8217;t forget to change the IP to meet your enviroment</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The target name is broken into two pieces. First the target server portal name iqn.2010-01.org.example.hostname and then our unique hostname variable created in 1</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Enjoy</p>
 </div>
 </div>
 </div>
