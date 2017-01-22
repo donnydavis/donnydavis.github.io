@@ -154,7 +154,8 @@ So I switched my Openstack backend this week to FreeNAS. I was running a three n
 
 <p>The first challenge is I no longer would have an object store. I really like object stores, and one day I will figure out how to use them. In all seriousness, the cloud needs to use more of its own resources, so i decieded to implenment swift. The only issue is that I have 100TB ultra fast storage array, but no real way to use it with swift. TripleO by default will use the controller nodes to host the swift infrastuctre, which I was fine with. My controller nodes however are blades, and blades suck for storing data. My blades only have two drive slots, one for OS and one for swift.</p>
 
-<p>So my idea was to use ISCSI Targets instead of 1TB SSD’s. The SSD’s are great and all, but they don’t hold a candle to a real storage array. I wanted to automate the process of both mounting and wiping the iscsi drives on the SAN, so I documented the process here [http://project.fortnebula.com/docs/latest/openstack/tripleo/swift-iscsi.html](http://fortnebula.com/docs/latest/openstack/tripleo/swift-iscsi.html</p>
+<p>So my idea was to use ISCSI Targets instead of 1TB SSD’s. The SSD’s are great and all, but they don’t hold a candle to a real storage array. I wanted to automate the process of both mounting and wiping the iscsi drives on the SAN, so I documented the process here
+[http://project.fortnebula.com/docs/latest/openstack/tripleo/swift-iscsi.html](http://fortnebula.com/docs/latest/openstack/tripleo/swift-iscsi.html</p>
 
   </div>
 
